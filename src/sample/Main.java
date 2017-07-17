@@ -10,7 +10,6 @@ import java.io.IOException;
 
 import javafx.scene.layout.AnchorPane;
 
-
 public class Main extends Application {
 
     private Stage primaryStage;
@@ -18,11 +17,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("ChatFX");
-        //primaryStage.setScene(new Scene(root, 400, 600));
-        //primaryStage.show();
+
         initRootLayout();
         showPersonOverview();
     }
@@ -34,9 +31,8 @@ public class Main extends Application {
         try {
             // Загружаем корневой макет из fxml файла.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("sample/RootView.fxml"));
+            loader.setLocation(Main.class.getResource("RootView.fxml"));
             rootLayout = (BorderPane) loader.load();
-
             // Отображаем сцену, содержащую корневой макет.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
@@ -53,10 +49,10 @@ public class Main extends Application {
         try {
             // Загружаем сведения об адресатах.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("sample/sample.fxml"));
+            loader.setLocation(Main.class.getResource("sample.fxml"));
             AnchorPane personOverview = (AnchorPane) loader.load();
 
-            // Помещаем сведения об адресатах в центр корневого макета.
+            // Помещаем сведения об адресатах в центр корневого макета
             rootLayout.setCenter(personOverview);
         } catch (IOException e) {
             e.printStackTrace();
