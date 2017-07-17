@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox prefHeight="600.0" prefWidth="400.0" fx:controller="ChatFX.Controller" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <TextArea fx:id="taHistory" VBox.vgrow="ALWAYS" editable="false"/>
+      <HBox>
+         <children>
+            <TextField fx:id="tfMessage" promptText="Введите сообщение..." HBox.hgrow="ALWAYS" onAction="#sendMessage"/>
+            <Button fx:id="btnSend" mnemonicParsing="false" text="Отправить" onAction="#sendMessage" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

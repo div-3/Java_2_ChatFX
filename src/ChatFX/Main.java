@@ -1,14 +1,23 @@
-package sample;
+package ChatFX;
+/**
+ * Java. Level 2. Lesson 4. Part 2 (JavaFX).
+ *
+ * @author Ivan Dudorov
+ *
+ * Задание.
+ * Создать окно для клиентской части чата: большое текстовое поле для отображения переписки в центре окна.
+ * Однострочное текстовое поле для ввода сообщений и кнопка для отсылки сообщений на нижней панели.
+ * Сообщение должно отсылаться либо по нажатию кнопки на форме, либо по нажатию кнопки Enter.
+ * При «отсылке» сообщение перекидывается из нижнего поля в центральное.
+ */
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
-
-import javafx.scene.layout.AnchorPane;
 
 public class Main extends Application {
 
@@ -33,6 +42,7 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("RootView.fxml"));
             rootLayout = (BorderPane) loader.load();
+
             // Отображаем сцену, содержащую корневой макет.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
@@ -43,28 +53,20 @@ public class Main extends Application {
     }
 
     /**
-     * Показывает в корневом макете сведения об адресатах.
+     * Показывает в корневом макете основное окно чата.
      */
     public void showPersonOverview() {
         try {
-            // Загружаем сведения об адресатах.
+            // Загружаем основное окно чата.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("sample.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            loader.setLocation(Main.class.getResource("BaseView.fxml"));
+            VBox personOverview = (VBox) loader.load();
 
-            // Помещаем сведения об адресатах в центр корневого макета
+            // Помещаем основной чат в главную форму приложения.
             rootLayout.setCenter(personOverview);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Возвращает главную сцену.
-     * @return
-     */
-    public Stage getPrimaryStage() {
-        return primaryStage;
     }
 
     public static void main(String[] args) {
