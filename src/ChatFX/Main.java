@@ -13,6 +13,7 @@ package ChatFX;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -23,6 +24,9 @@ public class Main extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+
+    static ControllerRoot rootController;
+    static Controller baseController;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -40,8 +44,9 @@ public class Main extends Application {
         try {
             // Загружаем корневой макет из fxml файла.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("RootView.fxml"));
-            rootLayout = (BorderPane) loader.load();
+            loader.setLocation(getClass().getResource("RootView.fxml"));
+            rootLayout = loader.load();
+            rootController = loader.getController();
 
             // Отображаем сцену, содержащую корневой макет.
             Scene scene = new Scene(rootLayout);
@@ -61,6 +66,7 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("BaseView.fxml"));
             VBox personOverview = (VBox) loader.load();
+            baseController = loader.getController();
 
             // Помещаем основной чат в главную форму приложения.
             rootLayout.setCenter(personOverview);
